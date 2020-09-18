@@ -16,4 +16,5 @@ export default yup.object().shape({
   sausage: yup.bool(),
   onions: yup.bool(),
   pineapple: yup.bool(),
+  instructions: yup.string(),
 });

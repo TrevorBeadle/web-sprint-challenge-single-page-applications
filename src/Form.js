@@ -113,6 +113,16 @@ export default function Form(props) {
           onChange={onChange}
         />
       </label>
+      <h3>Special Instructions</h3>
+      <label>
+        Instructions
+        <input
+          type="textarea"
+          name="instructions"
+          value={values.instructions}
+          onChange={onChange}
+        />
+      </label>
       <div>
         <button disabled={disabled}>Add to Order</button>
         <article className="errors">

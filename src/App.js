@@ -14,6 +14,7 @@ const initialForm = {
   sausage: false,
   onions: false,
   pineapple: false,
+  instructions: "",
 };
 
 const initialErrors = {
@@ -67,6 +68,7 @@ const App = () => {
           return formValues[topping];
         }
       ),
+      instructions: formValues.instructions.trim(),
     };
     axios
       .post("https://reqres.in/api/users", newPizza)
