@@ -12,8 +12,8 @@ export default yup.object().shape({
       ["Original Red", "Garlic Ranch", "BBQ Sauce", "Spinach Alfredo"],
       "Sauce is required"
     ),
-  pepperoni: yup.bool().oneOf([true]),
-  sausage: yup.bool().oneOf([true]),
-  onions: yup.bool().oneOf([true]),
-  pineapple: yup.bool().oneOf([true]),
+  pepperoni: yup.bool(),
+  sausage: yup.bool(),
+  onions: yup.bool(),
+  pineapple: yup.bool(),
 });

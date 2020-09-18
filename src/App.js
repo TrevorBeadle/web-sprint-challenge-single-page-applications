@@ -31,21 +31,6 @@ const App = () => {
   const [formErrors, setFormErrors] = useState(initialErrors);
   const [disabled, setDisabled] = useState(initialDisabled);
 
-  const submit = () => {
-    const newPizza = {
-      name: "",
-      size: "",
-      sauce: "",
-    };
-    axios
-      .post("https://reqres.in/", newPizza)
-      .then(res => {
-        setPizzas([...pizzas, res.data]);
-        setFormValues(initialForm);
-      })
-      .catch(err => console.log(err));
-  };
-
   const validate = (name, value) => {
     yup
       .reach(schema, name)
@@ -71,6 +56,35 @@ const App = () => {
       [name]: value,
     });
   };
+
+  const submit = () => {
+    const newPizza = {
+      name: formValues.name.trim(),
+      size: formValues.size.trim(),
+      sauce: formValues.sauce.trim(),
+      toppings: ["pepperoni", "sausage", "onions", "pineapple"].filter(
+        topping => {
+          return formValues[topping];
+        }
+      ),
+    };
+    axios
+      .post("https://reqres.in/api/users", newPizza)
+      .then(res => {
+        setPizzas([...pizzas, res.data]);
+        setFormValues(initialForm);
+      })
+      .catch(err => console.log(err));
+  };
+
+  useEffect(() => {
+    axios
+      .get("https://reqres.in/api/users")
+      .then(res => {
+        setPizzas(res.data);
+      })
+      .catch(err => console.log(err));
+  }, []);
 
   useEffect(() => {
     schema.isValid(formValues).then(valid => {
