@@ -18,6 +18,7 @@ export default function Form(props) {
     <form onSubmit={onSubmit}>
       <h2>Build your own pizza!</h2>
       <label htmlFor="name">
+        Name
         <input
           type="text"
           value={values.name}
@@ -114,6 +115,11 @@ export default function Form(props) {
       </label>
       <div>
         <button>Add to Order</button>
+        <article className="errors">
+          <p>{errors.name}</p>
+          <p>{errors.size}</p>
+          <p>{errors.sauce}</p>
+        </article>
       </div>
     </form>
   );

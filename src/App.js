@@ -3,6 +3,7 @@ import { Switch, Route, Link } from "react-router-dom";
 import Header from "./Header";
 import Form from "./Form";
 import axios from "axios";
+import schema from "./schema";
 import * as yup from "yup";
 
 const initialForm = {
@@ -36,7 +37,6 @@ const App = () => {
       size: "",
       sauce: "",
     };
-
     axios
       .post("https://reqres.in/", newPizza)
       .then(res => {
@@ -46,7 +46,26 @@ const App = () => {
       .catch(err => console.log(err));
   };
 
+  const validate = (name, value) => {
+    yup
+      .reach(schema, name)
+      .validate(value)
+      .then(() => {
+        setFormErrors({
+          ...formErrors,
+          [name]: "",
+        });
+      })
+      .catch(err => {
+        setFormErrors({
+          ...formErrors,
+          [name]: err.errors[0],
+        });
+      });
+  };
+
   const change = (name, value) => {
+    validate(name, value);
     setFormValues({
       ...formValues,
       [name]: value,
@@ -58,7 +77,12 @@ const App = () => {
       <Switch>
         <Route path="/pizza">
           <Header />
-          <Form values={formValues} submit={submit} change={change} />
+          <Form
+            values={formValues}
+            submit={submit}
+            change={change}
+            errors={formErrors}
+          />
         </Route>
         <Route path="/">
           <Header />
