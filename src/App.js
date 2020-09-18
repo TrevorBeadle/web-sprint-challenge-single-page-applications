@@ -84,7 +84,6 @@ const App = () => {
     axios
       .get("https://reqres.in/api/users")
       .then(res => {
-        console.log(res.data.data);
         setPizzas(res.data.data);
       })
       .catch(err => console.err(err));
