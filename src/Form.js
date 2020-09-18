@@ -17,7 +17,8 @@ export default function Form(props) {
   return (
     <form onSubmit={onSubmit}>
       <h2>Build your own pizza!</h2>
-      <label htmlFor="name">
+      <h3>Enter your name!</h3>
+      <label>
         Name
         <input
           type="text"
@@ -27,7 +28,8 @@ export default function Form(props) {
         />
       </label>
       <h3>Choice of Size</h3>
-      <label htmlFor="size">
+      <label>
+        Size
         <select name="size" value={values.size} onChange={onChange}>
           <option value="">Select</option>
           <option value="Small">Small</option>
@@ -116,20 +118,19 @@ export default function Form(props) {
       <h3>Special Instructions</h3>
       <label>
         Instructions
-        <input
-          type="textarea"
+        <textarea
           name="instructions"
           value={values.instructions}
           onChange={onChange}
         />
       </label>
       <div>
-        <button disabled={disabled}>Add to Order</button>
         <article className="errors">
           <p>{errors.name}</p>
           <p>{errors.size}</p>
           <p>{errors.sauce}</p>
         </article>
+        <button disabled={disabled}>Add to Order</button>
       </div>
     </form>
   );
