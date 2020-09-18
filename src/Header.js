@@ -4,8 +4,11 @@ import { Link } from "react-router-dom";
 export default function Header(props) {
   return (
     <header>
-      <h1>Lambda Eats</h1>
-      <nav></nav>
+      <h3>Lambda Eats</h3>
+      <nav>
+        <Link to="/">Home</Link>
+        <Link to="/pizza">Order Now</Link>
+      </nav>
     </header>
   );
 }
