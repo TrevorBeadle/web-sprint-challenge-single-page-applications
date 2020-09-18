@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./App.css";
 import { Switch, Route, Link } from "react-router-dom";
 import Header from "./Header";
 import Form from "./Form";
@@ -76,16 +77,17 @@ const App = () => {
         setPizzas([...pizzas, res.data]);
         setFormValues(initialForm);
       })
-      .catch(err => console.log(err));
+      .catch(err => console.err(err));
   };
 
   useEffect(() => {
     axios
       .get("https://reqres.in/api/users")
       .then(res => {
-        setPizzas(res.data);
+        console.log(res.data.data);
+        setPizzas(res.data.data);
       })
-      .catch(err => console.log(err));
+      .catch(err => console.err(err));
   }, []);
 
   useEffect(() => {
