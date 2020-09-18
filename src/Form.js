@@ -87,7 +87,7 @@ export default function Form(props) {
         />
       </label>
       <label>
-        Pepperoni
+        Sausage
         <input
           type="checkbox"
           name="sausage"
@@ -114,7 +114,7 @@ export default function Form(props) {
         />
       </label>
       <div>
-        <button>Add to Order</button>
+        <button disabled={disabled}>Add to Order</button>
         <article className="errors">
           <p>{errors.name}</p>
           <p>{errors.size}</p>

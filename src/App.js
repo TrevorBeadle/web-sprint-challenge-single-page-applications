@@ -72,6 +72,12 @@ const App = () => {
     });
   };
 
+  useEffect(() => {
+    schema.isValid(formValues).then(valid => {
+      setDisabled(!valid);
+    });
+  }, [formValues]);
+
   return (
     <>
       <Switch>
@@ -82,6 +88,7 @@ const App = () => {
             submit={submit}
             change={change}
             errors={formErrors}
+            disabled={disabled}
           />
         </Route>
         <Route path="/">
