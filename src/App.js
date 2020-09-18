@@ -8,6 +8,10 @@ const initialForm = {
   name: "",
   size: "",
   sauce: "",
+  pepperoni: false,
+  sausage: false,
+  onions: false,
+  pineapple: false,
 };
 
 const initialErrors = {
@@ -31,6 +35,21 @@ const App = () => {
       size: "",
       sauce: "",
     };
+
+    axios
+      .post("https://reqres.in/", newPizza)
+      .then(res => {
+        setPizzas([...pizzas, res.data]);
+        setFormValues(initialForm);
+      })
+      .catch(err => console.log(err));
+  };
+
+  const change = (name, value) => {
+    setFormValues({
+      ...formValues,
+      [name]: value,
+    });
   };
 
   return (
@@ -38,7 +57,7 @@ const App = () => {
       <Switch>
         <Route path="/pizza">
           <Header />
-          <Form />
+          <Form values={formValues} submit={submit} change={change} />
         </Route>
         <Route path="/">
           <Header />

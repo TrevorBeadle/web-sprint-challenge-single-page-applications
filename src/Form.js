@@ -25,8 +25,8 @@ export default function Form(props) {
           name="name"
         />
       </label>
+      <h3>Choice of Size</h3>
       <label htmlFor="size">
-        Choice of Size
         <select name="size" value={values.size} onChange={onChange}>
           <option value="">Select</option>
           <option value="Small">Small</option>
@@ -34,8 +34,9 @@ export default function Form(props) {
           <option value="Large">Large</option>
         </select>
       </label>
+      <h3>Choice of Sauce</h3>
       <label>
-        Choice of Sauce
+        Original Red
         <input
           type="radio"
           name="sauce"
@@ -45,6 +46,7 @@ export default function Form(props) {
         />
       </label>
       <label>
+        Garlic Ranch
         <input
           type="radio"
           name="sauce"
@@ -53,6 +55,66 @@ export default function Form(props) {
           onChange={onChange}
         />
       </label>
+      <label>
+        BBQ Sauce
+        <input
+          type="radio"
+          name="sauce"
+          value="BBQ Sauce"
+          checked={values.sauce === "BBQ Sauce"}
+          onChange={onChange}
+        />
+      </label>
+      <label>
+        Spinach Alfredo
+        <input
+          type="radio"
+          name="sauce"
+          value="Spinach Alfredo"
+          checked={values.sauce === "Spinach Alfredo"}
+          onChange={onChange}
+        />
+      </label>
+      <h3>Add Toppings</h3>
+      <label>
+        Pepperoni
+        <input
+          type="checkbox"
+          name="pepperoni"
+          checked={values.pepperoni}
+          onChange={onChange}
+        />
+      </label>
+      <label>
+        Pepperoni
+        <input
+          type="checkbox"
+          name="sausage"
+          checked={values.sausage}
+          onChange={onChange}
+        />
+      </label>
+      <label>
+        Onions
+        <input
+          type="checkbox"
+          name="onions"
+          checked={values.onions}
+          onChange={onChange}
+        />
+      </label>
+      <label>
+        Pineapple
+        <input
+          type="checkbox"
+          name="pineapple"
+          checked={values.pineapple}
+          onChange={onChange}
+        />
+      </label>
+      <div>
+        <button>Add to Order</button>
+      </div>
     </form>
   );
 }
